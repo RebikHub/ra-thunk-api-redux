@@ -1,9 +1,14 @@
-import React from "react";
+import React, {Fragment} from 'react';
+import ServiceAdd from './components/ServiceAdd';
+import ServiceList from './components/ServiceList';
 
-export default function App() {
+function App() {
   return (
-    <div className="App">
-
-    </div>
+    <Fragment>
+      <ServiceAdd />
+      <ServiceList />
+    </Fragment>
   );
 }
+
+export default App;
