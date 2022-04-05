@@ -1,13 +1,17 @@
-import React, {Fragment} from 'react';
-import ServiceAdd from './components/ServiceAdd';
+import React from 'react';
+import { Navigate, Route, Routes } from 'react-router-dom';
+import ServiceEdit from './components/ServiceEdit';
 import ServiceList from './components/ServiceList';
 
 function App() {
   return (
-    <Fragment>
-      <ServiceAdd />
-      <ServiceList />
-    </Fragment>
+    <>
+      <Routes>
+        <Route path='/' element={<Navigate to={'/services'}/>}/>
+        <Route path='/edit' element={<ServiceEdit />} />
+        <Route path='/services' element={<ServiceList />}/>
+      </Routes>
+    </>
   );
 }
 

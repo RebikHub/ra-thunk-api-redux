@@ -21,14 +21,14 @@ const router = new Router();
 function fortune(ctx, body = null, status = 200) {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
-            if (Math.random() > 0.25) {
+            // if (Math.random() > 0.25) {
                 ctx.response.status = status;
                 ctx.response.body = body;
                 resolve();
                 return;
-            }
+            // }
 
-            reject(new Error('Something bad happened'));
+            // reject(new Error('Something bad happened'));
         }, 3 * 1000);
     })
 }
@@ -37,6 +37,7 @@ router.get('/api/services', async (ctx, next) => {
     const body = services.map(o => ({id: o.id, name: o.name, price: o.price}))
     return fortune(ctx, body);
 });
+
 router.get('/api/services/:id', async (ctx, next) => {
     const id = Number(ctx.params.id);
     const index = services.findIndex(o => o.id === id);
@@ -47,6 +48,7 @@ router.get('/api/services/:id', async (ctx, next) => {
     const body = services[index];
     return fortune(ctx, body);
 });
+
 router.post('/api/services', async (ctx, next) => {
     const id = ctx.request.body.id;
     if (id !== 0) {
@@ -63,8 +65,10 @@ router.post('/api/services', async (ctx, next) => {
     const status = 204;
     return fortune(ctx, null, status);
 });
+
 router.delete('/api/services/:id', async (ctx, next) => {
     const id = Number(ctx.params.id);
+    console.log(id);
     const index = services.findIndex(o => o.id === id);
     if (index === -1) {
         const status = 404;

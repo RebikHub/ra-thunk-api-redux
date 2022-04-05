@@ -6,7 +6,7 @@ import {
   ADD_SERVICE_REQUEST,
   ADD_SERVICE_FAILURE,
   ADD_SERVICE_SUCCESS,
-  REMOVE_SERVICE,
+  // REMOVE_SERVICE,
 } from './actionTypes';
 
 export const fetchServicesRequest = () => ({
@@ -54,12 +54,12 @@ export const changeServiceField = (name, value) => ({
   },
 });
 
-export const removeService = id => ({
-  type: REMOVE_SERVICE,
-  payload: {
-    id,
-  },
-});
+// export const removeService = id => ({
+//   type: REMOVE_SERVICE,
+//   payload: {
+//     id,
+//   },
+// });
 
 export const fetchServices = async dispatch => {
   dispatch(fetchServicesRequest());
@@ -93,3 +93,21 @@ export const addService = async (dispatch, name, price) => {
   }
   fetchServices(dispatch);
 }
+
+export const removeService = async (dispatch, id) => {
+  dispatch(fetchServicesRequest());
+  try {
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/${id}`, {
+      method: 'DELETE'
+    })
+    if (!response.ok) {
+      throw new Error(response.statusText);
+    }
+    const data = await response.json();
+    console.log(data);
+    dispatch(fetchServicesSuccess(data));
+  } catch (e) {
+    dispatch(fetchServicesFailure(e.message));
+  }
+  fetchServices(dispatch);
+};
