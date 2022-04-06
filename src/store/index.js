@@ -1,11 +1,15 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
-import serviceListReducer from '../reducers/serviceList';
-import serviceAddReducer from '../reducers/serviceAdd';
+import reducerGet from "./reducerGet";
+import reducerGetId from "./reducerGetId";
+import reducerDelete from "./reducerDelete";
+import reducerPost from "./reducerPost";
 import thunk from "redux-thunk";
 
 const reducer = combineReducers({
-  serviceList: serviceListReducer,
-  serviceAdd: serviceAddReducer,
+  serviceList: reducerGet,
+  serviceRemove: reducerDelete,
+  serviceEdit: reducerGetId,
+  servicePost: reducerPost,
 });
 
 const store = createStore(
