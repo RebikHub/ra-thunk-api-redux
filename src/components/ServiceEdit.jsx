@@ -53,7 +53,8 @@ export default function ServiceEdit() {
     setInput((prev) => ({...prev, content: ev.target.value}));
   }
 
-  async function enterService() {
+  async function enterService(ev) {
+    ev.preventDefault();
     await fetchPost(dispatch, input);
   }
 
@@ -62,37 +63,33 @@ export default function ServiceEdit() {
   }
 
   return (
-    <>
+    <form onSubmit={enterService} className={loading || post.loading ? 'hidden-form' : ''}>
+      <div className={loading || post.loading ? 'hidden' : 'none'}></div>
       <div className='edit-input'>
         <label htmlFor="name">Название</label>
-        {loading || post.loading ?
-            <div>
-              <div className="loader-btn" ></div>
-            </div> :
-            <input name='name' type="text"
-              value={input.name}
-              onChange={inputName} />}
+        <input name='name' type="text"
+          required
+          value={input.name}
+          onChange={inputName} />
         <label htmlFor="price">Стоимость</label>
-        {loading || post.loading ?
-            <div>
-              <div className="loader-btn" ></div>
-            </div> :
-            <input name='price' type="number"
-              value={input.price}
-              onChange={inputPrice} />}
+        <input name='price' type="number"
+          required
+          value={input.price}
+          onChange={inputPrice} />
         <label htmlFor="description">Описание</label>
+        <input name='description' type="text"
+          required
+          value={input.content}
+          onChange={inputContent} />
+      </div>
+      <div className='edit-buttons'>
+        <button type='button' onClick={() => navigate('/services')}>Отмена</button>
         {loading || post.loading ?
             <div>
               <div className="loader-btn" ></div>
             </div> :
-            <input name='description' type="text"
-              value={input.content}
-              onChange={inputContent} />}
+            <button type='submit'>Сохранить</button>}
       </div>
-      <div className='edit-btn'>
-        <button type='button' onClick={() => navigate('/services')}>Отмена</button>
-        <button type='button' onClick={enterService}>Сохранить</button>
-      </div>
-    </>
+    </form>
   )
 }

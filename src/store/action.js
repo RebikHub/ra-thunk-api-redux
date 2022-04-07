@@ -144,5 +144,4 @@ export const fetchPost = async (dispatch, item) => {
   } catch (e) {
     dispatch(fetchPostError(e.message));
   }
-  fetchGet(dispatch);
 };

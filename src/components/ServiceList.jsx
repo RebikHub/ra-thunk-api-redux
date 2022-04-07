@@ -7,7 +7,7 @@ import Loader from './Loader';
 
 export default function ServiceList() {
   let navigate = useNavigate();
-  const [removeId, setRemoveId] = useState(null);
+  const [removeId, setRemoveId] = useState([]);
   const {items, loading, error} = useSelector(state => state.serviceList);
   const removeLoading = useSelector(state => state.serviceRemove.loading);
   const removeError = useSelector(state => state.serviceRemove.error);
@@ -17,12 +17,12 @@ export default function ServiceList() {
     fetchGet(dispatch);
   }, [dispatch])
 
-  useEffect(() => {
-    setRemoveId(null);
-  }, [items.length])
+  // useEffect(() => {
+  //   setRemoveId(null);
+  // }, [items.length])
 
   const handleRemove = id => {
-    setRemoveId(id);
+    setRemoveId((prev) => ([...prev, id]));
     fetchDelete(dispatch, id);
   }
 
@@ -44,7 +44,7 @@ export default function ServiceList() {
       {items.map(o => (
         <li key={o.id}>
           <p className="item-text">{`${o.name} ${o.price}`}</p>
-          {!removeLoading || removeId !== o.id ?
+          {!removeLoading || !removeId.includes(o.id) ?
             <div>
               <button className="btn-edit" onClick={() => handleEdit(o.id)}></button>
               <button className="btn-remove" onClick={() => handleRemove(o.id)}></button>
