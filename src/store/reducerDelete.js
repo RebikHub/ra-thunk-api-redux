@@ -29,5 +29,5 @@ export default function reducerDelete(state = initialState, action) {
       };
     default:
       return state;
-  }
-}
+  };
+};

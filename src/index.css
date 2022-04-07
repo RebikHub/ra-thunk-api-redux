@@ -99,7 +99,6 @@ form {
   z-index: 1;
 }
 
-
 .loader-btn {
   font-size: 10px;
   margin: 6px 26px;
@@ -124,6 +123,7 @@ form {
   left: 0;
   content: '';
 }
+
 .loader-btn:after {
   background: #ffffff;
   width: 75%;

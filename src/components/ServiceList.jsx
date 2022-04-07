@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { fetchGet, fetchDelete, fetchGetId } from '../store/action';
@@ -15,29 +15,25 @@ export default function ServiceList() {
   
   useEffect(() => {
     fetchGet(dispatch);
-  }, [dispatch])
+  }, [dispatch]);
 
-  // useEffect(() => {
-  //   setRemoveId(null);
-  // }, [items.length])
-
-  const handleRemove = id => {
+  function handleRemove(id) {
     setRemoveId((prev) => ([...prev, id]));
     fetchDelete(dispatch, id);
-  }
+  };
 
-  const handleEdit = id => {
+  function handleEdit(id) {
     fetchGetId(dispatch, id);
-    navigate("/edit")
-  }
+    navigate("/edit");
+  };
 
   if (loading) {
     return <Loader/>;
-  }
+  };
 
   if (error || removeError) {
     return <Error/>;
-  }
+  };
 
   return (
     <ul>
@@ -57,5 +53,4 @@ export default function ServiceList() {
       ))}
     </ul>
   );
-}
-
+};

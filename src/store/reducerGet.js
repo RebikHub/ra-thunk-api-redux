@@ -35,5 +35,5 @@ export default function reducerGet(state = initialState, action) {
       };
     default:
       return state;
-  }
-}
+  };
+};

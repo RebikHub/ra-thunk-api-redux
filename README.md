@@ -1,4 +1,7 @@
-API
+[![Build status](https://ci.appveyor.com/api/projects/status/untkea0388ho3ij6/branch/master?svg=true)](https://ci.appveyor.com/project/RebikHub/ra-thunk-api-redux/branch/master)
+
+[API-redux](https://rebikhub.github.io/ra-thunk-api-redux/)
+
 ===
 
 Вам необходимо переделать проект с лекции с использованием Router, а также нормальной обработкой загрузки и отображения ошибок.
