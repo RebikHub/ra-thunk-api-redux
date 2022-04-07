@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/ra-thunk-api-redux/static/css/main.d7169215.css",
+    "main.js": "/ra-thunk-api-redux/static/js/main.e0dfb3c6.js",
+    "index.html": "/ra-thunk-api-redux/index.html",
+    "main.d7169215.css.map": "/ra-thunk-api-redux/static/css/main.d7169215.css.map",
+    "main.e0dfb3c6.js.map": "/ra-thunk-api-redux/static/js/main.e0dfb3c6.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d7169215.css",
+    "static/js/main.e0dfb3c6.js"
+  ]
+}
